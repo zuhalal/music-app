@@ -14,7 +14,7 @@ class ListMusicAdapter(private val listMusic: ArrayList<Music>):
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     interface OnItemClickCallback {
-        fun onItemClicked(data: Music)
+        fun onItemClicked(data: Music, index: Int)
     }
 
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -42,7 +42,7 @@ class ListMusicAdapter(private val listMusic: ArrayList<Music>):
 
         holder.tvArtist.text = music.artists
         holder.tvSongTitle.text = music.title
-//        holder.itemView.setOnClickListener({onItemClickCallback.onItemClicked(listMusic[holder.adapterPosition])})
+        holder.itemView.setOnClickListener({onItemClickCallback.onItemClicked(listMusic[holder.adapterPosition], holder.adapterPosition)})
     }
 
     override fun getItemCount(): Int {
