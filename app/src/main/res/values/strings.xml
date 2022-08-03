@@ -9,4 +9,5 @@
     <string name="label">Label:</string>
     <string name="genres">Genres:</string>
     <string name="duration">Duration:</string>
+    <string name="about_me">About Me</string>
 </resources>

@@ -4,6 +4,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -18,8 +19,18 @@ class MusicDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_music_detail)
+
+        // calling the action bar
+        var actionBar = getSupportActionBar()
+
+        // showing the back button in action bar
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.title = "Music Details"
+        }
+
         val music = MusicData.listData[intent.getIntExtra(EXTRA_INDEX, 0)]
-        Log.d("index: " , "${MusicData.listData[intent.getIntExtra(EXTRA_INDEX, 0)].artists}")
+//        Log.d("index: " , "${MusicData.listData[intent.getIntExtra(EXTRA_INDEX, 0)].artists}")
 
         val image: ImageView = findViewById(R.id.iv_album)
         Glide.with(this).load(music.images).into(image)
@@ -39,4 +50,10 @@ class MusicDetailActivity : AppCompatActivity() {
         val duration: TextView = findViewById(R.id.tv_duration)
         duration.text = "${music.duration} seconds"
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
 }

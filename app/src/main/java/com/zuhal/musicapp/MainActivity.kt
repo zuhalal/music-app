@@ -3,6 +3,8 @@ package com.zuhal.musicapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +25,25 @@ class MainActivity : AppCompatActivity() {
 
     private fun showSelectedMusic(music: Music) {
         Toast.makeText(this, "Kamu memilih " + music.title, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        setMode(item.itemId)
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setMode(selectedMode: Int) {
+        when (selectedMode) {
+            R.id.action_aboutme -> {
+                val intent = Intent(this@MainActivity, AboutMeActivity::class.java)
+                startActivity(intent)
+            }
+        }
     }
 
     private fun showRecyclerList() {
