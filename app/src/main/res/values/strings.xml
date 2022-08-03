@@ -10,4 +10,6 @@
     <string name="genres">Genres:</string>
     <string name="duration">Duration:</string>
     <string name="about_me">About Me</string>
+    <string name="music_app">Music App</string>
+    <string name="by_zuhal_alimul_hadi">By: Zuhal \'Alimul Hadi</string>
 </resources>
