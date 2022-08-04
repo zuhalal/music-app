@@ -12,4 +12,7 @@
     <string name="about_me">About Me</string>
     <string name="music_app">Music App</string>
     <string name="by_zuhal_alimul_hadi">By: Zuhal \'Alimul Hadi</string>
+    <string name="share_this_song">Share this song</string>
+    <string name="full_name">Zuhal \'Alimul Hadi</string>
+    <string name="my_email">zuhalalimulhadi19@gmail.com</string>
 </resources>
