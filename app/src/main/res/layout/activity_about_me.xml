@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/full_name"
-        android:textSize="24dp"
+        android:textSize="24sp"
         android:gravity="center"
         android:textColor="@color/green"
         android:textStyle="bold" />
@@ -34,6 +34,6 @@
         android:gravity="center"
         android:text="@string/my_email"
         android:textColor="@color/white"
-        android:textSize="18dp"
+        android:textSize="18sp"
         />
 </LinearLayout>

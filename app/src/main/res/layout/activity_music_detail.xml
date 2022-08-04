@@ -33,7 +33,7 @@
             android:textColor="@color/green"
             android:text="@string/lorem_ipsum"
             android:layout_gravity="center_horizontal"
-            android:textSize="28dp"
+            android:textSize="28sp"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             />
@@ -45,7 +45,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_marginBottom="16dp"
             >
             <TableRow
                 android:layout_width="match_parent"
@@ -138,6 +137,44 @@
                     />
                 <TextView
                     android:id="@+id/tv_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lorem_ipsum"
+                    android:textColor="@color/white"
+                    />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/release_date"
+                    android:textColor="@color/white"
+                    android:layout_marginEnd="16dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_release_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lorem_ipsum"
+                    android:textColor="@color/white"
+                    />
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/play_count"
+                    android:textColor="@color/white"
+                    android:layout_marginEnd="16dp"
+                    />
+                <TextView
+                    android:id="@+id/tv_play_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/lorem_ipsum"

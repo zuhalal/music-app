@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="@string/music_app"
         android:textColor="@color/green"
-        android:textSize="28dp"
+        android:textSize="28sp"
         android:textStyle="bold" />
     <Space
         android:layout_width="match_parent"
@@ -26,6 +26,6 @@
         android:text="@string/by_zuhal_alimul_hadi"
         android:textColor="@color/white"
         android:gravity="center"
-        android:textSize="16dp"
+        android:textSize="16sp"
         />
 </LinearLayout>

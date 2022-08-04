@@ -15,4 +15,6 @@
     <string name="share_this_song">Share this song</string>
     <string name="full_name">Zuhal \'Alimul Hadi</string>
     <string name="my_email">zuhalalimulhadi19@gmail.com</string>
+    <string name="release_date">Release Date:</string>
+    <string name="play_count">Play Count:</string>
 </resources>

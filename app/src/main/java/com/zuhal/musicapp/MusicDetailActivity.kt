@@ -38,6 +38,20 @@ class MusicDetailActivity : AppCompatActivity() {
         val image: ImageView = findViewById(R.id.iv_album)
         Glide.with(this).load(music.images).into(image)
 
+        changeText(music)
+
+        val btn: Button = findViewById(R.id.btn_share)
+        btn.setOnClickListener({
+            val openURL = Intent(android.content.Intent.ACTION_SEND)
+            openURL.putExtra(Intent.EXTRA_TEXT, music.song_url)
+            openURL.setType("text/plain")
+
+            val shareIntent = Intent.createChooser(openURL, null)
+            startActivity(shareIntent)
+        })
+    }
+
+    fun changeText(music: Music) {
         val artist: TextView = findViewById(R.id.tv_artist)
         artist.text = music.artists
 
@@ -56,15 +70,11 @@ class MusicDetailActivity : AppCompatActivity() {
         val duration: TextView = findViewById(R.id.tv_duration)
         duration.text = convertMinutes(music.duration.toInt())
 
-        val btn: Button = findViewById(R.id.btn_share)
-        btn.setOnClickListener({
-            val openURL = Intent(android.content.Intent.ACTION_SEND)
-            openURL.putExtra(Intent.EXTRA_TEXT, music.song_url)
-            openURL.setType("text/plain")
+        val releaseDate: TextView = findViewById(R.id.tv_release_date)
+        releaseDate.text = music.release_date
 
-            val shareIntent = Intent.createChooser(openURL, null)
-            startActivity(shareIntent)
-        })
+        val playCount: TextView = findViewById(R.id.tv_play_count)
+        playCount.text = music.play_count
     }
 
     override fun onSupportNavigateUp(): Boolean {
