@@ -192,6 +192,8 @@
             android:text="@string/share_this_song"
             android:backgroundTint="@color/button_background_color"
             android:textColor="@color/white"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
             />
         <Space
             android:layout_width="match_parent"
