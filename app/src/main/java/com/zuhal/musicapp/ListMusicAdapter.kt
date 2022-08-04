@@ -20,6 +20,7 @@ class ListMusicAdapter(private val listMusic: ArrayList<Music>):
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var tvArtist: TextView = itemView.findViewById(R.id.tv_artist)
         var tvSongTitle: TextView = itemView.findViewById(R.id.tv_song_title)
+        var tvAlbum: TextView = itemView.findViewById(R.id.tv_album)
         var imgPhoto: ImageView = itemView.findViewById(R.id.img_item_photo)
     }
 
@@ -40,8 +41,9 @@ class ListMusicAdapter(private val listMusic: ArrayList<Music>):
             .apply(RequestOptions().override(55,55))
             .into(holder.imgPhoto)
 
-        holder.tvArtist.text = music.artists
         holder.tvSongTitle.text = music.title
+        holder.tvArtist.text = "Artist: ${music.artists}"
+        holder.tvAlbum.text = "Album: ${music.album}"
         holder.itemView.setOnClickListener({onItemClickCallback.onItemClicked(listMusic[holder.adapterPosition], holder.adapterPosition)})
     }
 
