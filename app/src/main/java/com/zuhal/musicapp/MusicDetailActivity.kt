@@ -4,16 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.zuhal.musicapp.databinding.ActivityMusicDetailBinding
 
 class MusicDetailActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMusicDetailBinding
+
     companion object {
         const val EXTRA_INDEX = "extra_index"
     }
 
-    fun convertMinutes(second: Int): String {
+    private fun convertMinutes(second: Int): String {
         val minutes: Int = (second % 3600) / 60
         val seconds: Int = (second % 3600)% 60
         return "${minutes}:${seconds}"
@@ -21,10 +23,11 @@ class MusicDetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_music_detail)
+        binding = ActivityMusicDetailBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // calling the action bar
-        var actionBar = getSupportActionBar()
+        var actionBar = supportActionBar
 
         // showing the back button in action bar
         if (actionBar != null) {
@@ -33,53 +36,40 @@ class MusicDetailActivity : AppCompatActivity() {
         }
 
         val music = MusicData.listData[intent.getIntExtra(EXTRA_INDEX, 0)]
-//        Log.d("index: " , "${MusicData.listData[intent.getIntExtra(EXTRA_INDEX, 0)].artists}")
 
-        val image: ImageView = findViewById(R.id.iv_album)
+        val image: ImageView = binding.ivAlbum
         Glide.with(this).load(music.images).into(image)
 
         changeText(music)
 
         val btn: Button = findViewById(R.id.btn_share)
-        btn.setOnClickListener({
+        btn.setOnClickListener {
             val openURL = Intent(android.content.Intent.ACTION_SEND)
-            openURL.putExtra(Intent.EXTRA_TEXT, music.song_url)
-            openURL.setType("text/plain")
+            openURL.apply {
+                putExtra(Intent.EXTRA_TEXT, music.song_url)
+                type = "text/plain"
+            }
 
             val shareIntent = Intent.createChooser(openURL, null)
             startActivity(shareIntent)
-        })
+        }
     }
 
-    fun changeText(music: Music) {
-        val artist: TextView = findViewById(R.id.tv_artist)
-        artist.text = music.artists
-
-        val title: TextView = findViewById(R.id.tv_song_title)
-        title.text = music.title
-
-        val bigTitle: TextView = findViewById(R.id.tv_big_title)
-        bigTitle.text = music.title
-
-        val label: TextView = findViewById(R.id.tv_label)
-        label.text = music.label
-
-        val genres: TextView = findViewById(R.id.tv_genres)
-        genres.text = music.genres
-
-        val duration: TextView = findViewById(R.id.tv_duration)
-        duration.text = convertMinutes(music.duration.toInt())
-
-        val releaseDate: TextView = findViewById(R.id.tv_release_date)
-        releaseDate.text = music.release_date
-
-        val playCount: TextView = findViewById(R.id.tv_play_count)
-        playCount.text = music.play_count
+    private fun changeText(music: Music) {
+        binding.apply {
+            tvArtist.text = music.artists
+            tvSongTitle.text = music.title
+            tvBigTitle.text = music.title
+            tvLabel.text = music.label
+            tvGenres.text = music.genres
+            tvDuration.text = convertMinutes(music.duration.toInt())
+            tvReleaseDate.text = music.release_date
+            tvPlayCount.text = music.play_count
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
     }
-
 }

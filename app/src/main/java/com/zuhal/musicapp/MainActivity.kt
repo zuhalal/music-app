@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 class MainActivity : AppCompatActivity() {
     private lateinit var rvMusic: RecyclerView
     private var list: ArrayList<Music> = arrayListOf()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun showSelectedMusic(music: Music) {
-        Toast.makeText(this, "Kamu memilih " + music.title, Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "Kamu memilih musik dengan judul " + music.title, Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
