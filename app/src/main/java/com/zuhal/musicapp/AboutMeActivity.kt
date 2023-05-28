@@ -9,7 +9,7 @@ class AboutMeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_about_me)
 
         // calling the action bar
-        var actionBar = getSupportActionBar()
+        val actionBar = supportActionBar
 
         // showing the back button in action bar
         if (actionBar != null) {

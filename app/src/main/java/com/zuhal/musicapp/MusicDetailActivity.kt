@@ -7,6 +7,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.zuhal.musicapp.databinding.ActivityMusicDetailBinding
+import com.zuhal.musicapp.utils.Utils
 
 class MusicDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMusicDetailBinding
@@ -15,19 +16,13 @@ class MusicDetailActivity : AppCompatActivity() {
         const val EXTRA_INDEX = "extra_index"
     }
 
-    private fun convertMinutes(second: Int): String {
-        val minutes: Int = (second % 3600) / 60
-        val seconds: Int = (second % 3600)% 60
-        return "${minutes}:${seconds}"
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMusicDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // calling the action bar
-        var actionBar = supportActionBar
+        val actionBar = supportActionBar
 
         // showing the back button in action bar
         if (actionBar != null) {
@@ -42,9 +37,9 @@ class MusicDetailActivity : AppCompatActivity() {
 
         changeText(music)
 
-        val btn: Button = findViewById(R.id.btn_share)
+        val btn: Button = binding.actionShare
         btn.setOnClickListener {
-            val openURL = Intent(android.content.Intent.ACTION_SEND)
+            val openURL = Intent(Intent.ACTION_SEND)
             openURL.apply {
                 putExtra(Intent.EXTRA_TEXT, music.song_url)
                 type = "text/plain"
@@ -62,7 +57,7 @@ class MusicDetailActivity : AppCompatActivity() {
             tvBigTitle.text = music.title
             tvLabel.text = music.label
             tvGenres.text = music.genres
-            tvDuration.text = convertMinutes(music.duration.toInt())
+            tvDuration.text = Utils.convertMinutes(music.duration.toInt())
             tvReleaseDate.text = music.release_date
             tvPlayCount.text = music.play_count
         }

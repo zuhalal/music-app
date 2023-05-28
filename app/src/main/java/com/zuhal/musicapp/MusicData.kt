@@ -1,7 +1,6 @@
 package com.zuhal.musicapp
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import java.util.*
 import kotlin.collections.ArrayList
 
 // Registering the Kotlin module with the ObjectMpper instance
@@ -9,17 +8,16 @@ val mapper = jacksonObjectMapper()
 
 object MusicData {
     val listData: List<Music>
-    get() {
-        val list: ArrayList<Music> = mapper.readValue(jsonString, object: TypeReference<ArrayList<Music>>() {})
-        return list
-    }
+        get() {
+            return mapper.readValue(jsonString, object : TypeReference<ArrayList<Music>>() {})
+        }
 }
 
 val jsonString = """
     [
       {
         "track_id": "45918693",
-        "title": "Left and Right (Feat. Jung Kook of BTS)",
+        "title": "Left and Right",
         "artists": "Charlie Puth, Jung Kook, BTS",
         "artist_image": "https://a10.gaanacdn.com/gn_img/artists/a7LWBkzbzX/7LWBL4xOKz/size_m_1642653813.webp",
         "album": "Left and Right (Feat. Jung Kook of BTS)",

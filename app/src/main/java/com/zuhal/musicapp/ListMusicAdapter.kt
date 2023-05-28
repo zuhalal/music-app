@@ -1,5 +1,6 @@
 package com.zuhal.musicapp
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -15,7 +16,7 @@ class ListMusicAdapter(private val listMusic: ArrayList<Music>):
         fun onItemClicked(data: Music, index: Int)
     }
 
-    class ListViewHolder(var binding: ItemRowMusicBinding) : RecyclerView.ViewHolder(binding.root) {}
+    class ListViewHolder(var binding: ItemRowMusicBinding) : RecyclerView.ViewHolder(binding.root)
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
@@ -26,6 +27,7 @@ class ListMusicAdapter(private val listMusic: ArrayList<Music>):
         return ListViewHolder(binding)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val music = listMusic[position]
 
